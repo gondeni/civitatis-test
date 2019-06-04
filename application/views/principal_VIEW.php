@@ -1,32 +1,28 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$fechas = array('name' => 'fechas', 'placeholder' => 'Elija un rango de fechas', 'type' => 'date', 'class' => 'form-control input-sm datepicker');
+$numero = array('name' => 'numero', 'placeholder' => '1', 'type' => 'number','min'=>'1','max'=>'10', 'class' => 'form-control input-sm');
+$submit = array('name' => 'submit', 'value' => 'Entrar', 'title' => 'Entrar', 'class' => 'btn btn-primary input-sm btn-sm');
 ?>
 <div class="contenedor">
     <div class="formulario">
-        <?php echo validation_errors(); ?>
 
-        <?php echo form_open('Principal_CONT/index'); ?>
-
-        <div class="input-group date" data-provide="datepicker">
-            <input type="text" class="form-control">
-            <div class="input-group-addon">
-                <span class="glyphicon glyphicon-th"></span>
+        <?php echo form_open('Principal_CONT'); ?>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="fechas">Fechas</label>
+                <?php echo form_input($fechas) ?>
+            </div>
+            <div class="col-md-4">
+                <label for="numero">Nº de personas</label>
+                <?php echo form_input($numero) ?>
+            </div>
+            <div class="col-md-1">
+                <?php echo form_input($submit) ?>
             </div>
         </div>
-        <h5>Username</h5>
-        <input type="text" name="username" value="" size="50" />
-
-        <h5>Password</h5>
-        <input type="text" name="password" value="" size="50" />
-
-        <h5>Password Confirm</h5>
-        <input type="text" name="passconf" value="" size="50" />
-
-        <h5>Email Address</h5>
-        <input type="text" name="email" value="" size="50" />
-
-        <div><input type="submit" value="Submit" /></div>
-
-        </form>
+        <?php echo form_close() ?>
+        <br>
+        <?php echo validation_errors(); ?>
     </div>
 </div>
