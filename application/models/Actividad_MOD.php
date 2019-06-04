@@ -16,26 +16,17 @@ class Actividad_MOD extends CI_Model
     public $precio;
     public $popularidad;
 
-    public function __construct()
-    {
-        parent::__construct();
-
-    }
-
     public function getActividades()
     {
-//        $actividad = new Actividad_MOD();
         $this->db->select('*');
         $this->db->from('actividades');
         $consulta = $this->db->get();
         $resultados = $consulta->custom_result_object('Actividad_MOD');
-
         return $resultados;
     }
 
     public function getActividad($idActividad = null, $titulo = null)
     {
-        $actividad = new Actividad_MOD();
         $this->db->select('*');
         $this->db->from('actividades');
         $this->db->where('idActividad', $idActividad);
