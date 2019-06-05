@@ -25,18 +25,7 @@ class Actividad_CONT extends CI_Controller
         //Obtenemos todas las actividades entre las fechas dadas
         $datos['actividades'] = $this->Actividad_MOD->getActividades($fecha_ini, $fecha_fin);
 
-        //Recorremos las actividades para obtener sus relacionadas
-        foreach ($datos['actividades'] as $key => $actividad) {
-//            $relacionadas = array();
-            $relacionadas = $this->Actividad_MOD->getActividadesRelacionadas($actividad->idActividad);
-
-            //Recorremos las relacionadas para obtener los datos de cada actividad
-            foreach($relacionadas as $key_r=>$relacionada){
-                $actividadRelacionada = $this->Actividad_MOD->getActividad($relacionada->idActividad2);
-                $relacionadas[$key_r] = $actividadRelacionada[0]->titulo;
-            }
-            $datos['actividades'][$key]->relacionadas = $relacionadas;
-        }
+        $datos['actividades'] = self::obtenerRelacionadas($datos);
 
 
         /* $datos['actividades'] = array(
@@ -66,5 +55,27 @@ class Actividad_CONT extends CI_Controller
         $this->load->view('utils/head');
         $this->load->view('listado_VIEW', $datos);
         $this->load->view('utils/foot');
+    }
+
+    public function obtenerRelacionadas($datos){
+        //Recorremos las actividades para obtener sus relacionadas
+        foreach ($datos['actividades'] as $key => $actividad) {
+//            $relacionadas = array();
+            $relacionadas = $this->Actividad_MOD->getActividadesRelacionadas($actividad->idActividad);
+
+            //Buscamos las actividades relacionadas
+            foreach ($relacionadas as $key_r => $relacionada) {
+                //obj Actividad
+                $relacionada = $this->Actividad_MOD->getActividad($relacionada['actividadRelacionada']);
+                //Recuperamos exclusivamente el título de cada actividad relacionada
+                $relacionadas[$key_r] = $relacionada[0]->titulo;
+            }
+            //TODO
+            //Aprovechamos para hacer la operación para obtener el total
+//            $datos['actividades'][$key]->precioTotal = $datos
+            $datos['actividades'][$key]->relacionadas = $relacionadas;
+        }
+
+        return $datos['actividades'];
     }
 }

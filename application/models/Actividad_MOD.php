@@ -11,7 +11,7 @@ class Actividad_MOD extends CI_Model
     public $idActividad;
     public $titulo;
     public $descripcion;
-    public $fechaInicio;
+    public $fechaIni;
     public $fechaFin;
     public $precio;
     public $popularidad;
@@ -43,10 +43,9 @@ class Actividad_MOD extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('actividades_relacionadas');
-        $this->db->where('idActividad1', $idActividad);
-//        $this->db->or_where('idActividad2', $idActividad);
+        $this->db->where('actividadPrincipal', $idActividad);
         $consulta = $this->db->get();
-        $resultado = $consulta->result();
+        $resultado = $consulta->result_array();
         return $resultado;
     }
 

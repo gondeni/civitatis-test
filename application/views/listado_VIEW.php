@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 echo "<pre/>";
 //var_dump($actividades);
 var_dump($actividades);
-die();
+var_dump($info);
 ?>
 <div class="row seccion">
     <h4>Actividades</h4>
@@ -13,9 +13,9 @@ die();
             <thead>
             <tr>
                 <th>Título</th>
-                <th>Descripción</th>
-                <th>Fechas</th>
-                <th>Precio</th>
+<!--                <th>Descripción</th>
+                <th>Fechas</th>-->
+                <th>Precio total (<?php echo $info['numero']?> persona/s)</th>
                 <th></th>
             </tr>
             </thead>
@@ -24,8 +24,8 @@ die();
                 <tr>
                     <td><?php echo $actividad->titulo?>
                     </td>
-                    <td><?php echo $actividad->descripcion ?></td>
-                    <td><?php echo $actividad->fechaIni." - ".$actividad->fechaFin ?></td>
+  <!--                  <td><?php /*echo $actividad->descripcion */?></td>
+                    <td><?php /*echo $actividad->fechaIni." - ".$actividad->fechaFin */?></td>-->
                     <td><?php echo $actividad->precio?> €</td>
                     <td><button class="btn btn-md btn-info" data-toggle="modal" value="<?php echo $actividad->idActividad?>" data-target="#informacion_adicional">Ver más</button></td>
                 </tr>
