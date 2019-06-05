@@ -14,12 +14,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets\bootstrap-4.3.1-dist\css\bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--JQUERY-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="<?= base_url() ?>assets/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="<?= base_url() ?>assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <!--JavaScript-->
     <script href="<?= base_url() ?>assets\bootstrap-4.3.1-dist\js\bootstrap.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script href="<?= base_url() ?>assets\datepicker-es.js"></script>
+    <!--    <script href="--><? //= base_url() ?><!--assets\jquery-3.4.1.min.js"></script>-->
+    <script href="<?= base_url() ?>assets/datepicker-es.js"></script>
 
     <script>
         $.datepicker.regional['es'] = {
@@ -46,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $(".fecha_ini").datepicker({
                 dateFormat: 'dd-mm-yy',
                 minDate: new Date(),
-                onSelect: function(date){
+                onSelect: function (date) {
                     var date2 = $('.fecha_ini').datepicker('getDate');
                     date2.setDate(date2.getDate() + 1);
                     $('.fecha_fin').datepicker('setDate', date2);
@@ -58,9 +59,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 dateFormat: 'dd-mm-yy',
                 minDate: new Date()
             });
-        });
+        })
+        // $('document').ready(function(){
+        //     $(".ver-mas").click(function () {
+        //         $("#modal").modal('toggle');
+        //         console.log("muestro");
+        //     })
+        // })
 
+
+        /*        $('document').ready(function(){
+                    $(".ver-mas").click(function () {
+                        $("#modal").modal('show');
+                    })
+                })*/
     </script>
+
     <style type="text/css">
         body {
             background-color: #CAEBF2;
@@ -80,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         .contenedor {
             postion: relative;
             max-width: 800px;
-            max-height: 350px;
+            /*max-height: 350px;*/
             margin: auto;
             border-style: outset;
             border-width: 1px;
@@ -135,6 +149,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         table th {
             text-align: center;
+            padding: 10px
+        }
+
+        table td {
+            text-align: justify;
+            padding: 10px;
+        }
+
+        a {
+            padding: 5px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
