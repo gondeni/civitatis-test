@@ -20,13 +20,12 @@ class Principal_CONT extends CI_Controller {
     public function index()
     {
 
-        $this->load->model('Actividad_MOD');
         //$res['resultados'] = $this->Actividad_MOD->getActividades();
-        $this->load->library('form_validation');
+        $this->load->library('form_validation','session');
 
-
-        $this->form_validation->set_rules('fecha', 'fecha', 'required');
-        $this->form_validation->set_rules('numero', '1', 'required|trim|min_length[1]|max_length[150]');
+        $this->form_validation->set_rules('fecha_ini', 'Fecha Inicio', 'required', array('required'=>'La fecha de inicio es obligatoria'));
+        $this->form_validation->set_rules('fecha_fin', 'Fecha Fin', 'required', array('required'=>'La fecha fin es obligatoria'));
+        $this->form_validation->set_rules('numero', 'Nº de reservas', 'required|trim|min_length[1]|max_length[150]', array('required'=>'El nº de personas de la reserva es obligatorio'));
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -36,9 +35,9 @@ class Principal_CONT extends CI_Controller {
         }
         else
         {
-            $this->load->view('utils/head');
-            $this->load->view('formsuccess');
-            $this->load->view('utils/foot');
+            $dat = array('fecha_ini'=>$_POST['fecha_ini'],'fecha_fin'=>$_POST['fecha_fin'],'numero'=>$_POST['numero']);
+            $this->session->set_flashdata('datos',$dat);
+            redirect('Actividad_CONT/listar');
         }
     }
 }

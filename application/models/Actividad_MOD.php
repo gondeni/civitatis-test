@@ -16,10 +16,13 @@ class Actividad_MOD extends CI_Model
     public $precio;
     public $popularidad;
 
-    public function getActividades()
+    public function getActividades($fechaIni,$fechaFin)
     {
         $this->db->select('*');
         $this->db->from('actividades');
+        $this->db->where('fechaIni>=',date($fechaIni));
+        $this->db->where('fechaFin<=',date($fechaFin));
+        $this->db->order_by('popularidad','DESC');
         $consulta = $this->db->get();
         $resultados = $consulta->custom_result_object('Actividad_MOD');
         return $resultados;
@@ -41,7 +44,7 @@ class Actividad_MOD extends CI_Model
         $this->db->select('*');
         $this->db->from('actividades_relacionadas');
         $this->db->where('idActividad1', $idActividad);
-        $this->db->or_where('idActividad2', $idActividad);
+//        $this->db->or_where('idActividad2', $idActividad);
         $consulta = $this->db->get();
         $resultado = $consulta->result();
         return $resultado;
