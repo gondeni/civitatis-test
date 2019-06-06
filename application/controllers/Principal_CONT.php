@@ -18,6 +18,9 @@ class Principal_CONT extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    /**
+     * Metodo base que construye el formulario de busqueda de actividad y lo imprime en la vista
+     */
     public function index()
     {
 

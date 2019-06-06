@@ -11,12 +11,20 @@ class Reserva_MOD extends CI_Model
     public $fechaReserva;
     public $fechaRealizacion;
 
+    /**
+     * Metodo para insertar nueva reserva en la tabla
+     * @param $data
+     */
     public function nuevaReserva($data)
     {
         $this->db->set($data);
         $this->db->insert('reservas', $data);
     }
 
+    /**
+     * Obtiene todas las reservas
+     * @return mixed
+     */
     public function getReservas()
     {
         $this->db->select('*');
@@ -26,6 +34,11 @@ class Reserva_MOD extends CI_Model
         return $resultados;
     }
 
+    /**
+     * Comprueba las repeticiones del cod de reserva presente en la bbdd
+     * @param $referencia
+     * @return mixed
+     */
     public function comprobarReferencia($referencia)
     {
         $this->db->select('*');
@@ -34,6 +47,54 @@ class Reserva_MOD extends CI_Model
         $consulta = $this->db->get();
         $resultados = $consulta->num_rows();
         return $resultados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdReserva()
+    {
+        return $this->idReserva;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReferencia()
+    {
+        return $this->referencia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPersonas()
+    {
+        return $this->personas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFechaReserva()
+    {
+        return $this->fechaReserva;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFechaRealizacion()
+    {
+        return $this->fechaRealizacion;
     }
 
 

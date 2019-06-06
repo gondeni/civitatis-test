@@ -16,6 +16,13 @@ class Actividad_MOD extends CI_Model
     public $precio;
     public $popularidad;
 
+    /**
+     * Metodo que obtiene todas las actividades entre las fechas pasadas.
+     *
+     * @param $fechaIni
+     * @param $fechaFin
+     * @return mixed matriz de actividades
+     */
     public function getActividades($fechaIni,$fechaFin)
     {
         $this->db->select('*');
@@ -28,6 +35,12 @@ class Actividad_MOD extends CI_Model
         return $resultados;
     }
 
+    /**
+     * Metodo que obtiene una unica actividad
+     * @param null $idActividad
+     * @param null $titulo
+     * @return mixed objecto actividad
+     */
     public function getActividad($idActividad = null, $titulo = null)
     {
         $this->db->select('*');
@@ -39,6 +52,11 @@ class Actividad_MOD extends CI_Model
         return $resultados;
     }
 
+    /**
+     * Metodo que muestra las actividades relacionadas a la pasada por parametro
+     * @param $idActividad
+     * @return mixed array de identificadores de actividad
+     */
     public function getActividadesRelacionadas($idActividad)
     {
         $this->db->select('*');

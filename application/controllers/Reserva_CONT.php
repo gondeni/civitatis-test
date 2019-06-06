@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class Reserva_CONT
+ */
 class Reserva_CONT extends CI_Controller
 {
     /**
@@ -12,10 +15,15 @@ class Reserva_CONT extends CI_Controller
         $this->load->model('Reserva_MOD');
     }
 
+    /**
+     * Función para iniciar el proceso de reserva de actividad
+     * Imprime el codigo de reserva devuelto por el modelo para posterior mostrado en la vista
+     */
     public function reservar()
     {
-
         $idActividad = $_POST['idActividad'];
+        $personas = $_POST['personas'];
+        $precio = $_POST['precio'];
 
         do {
             $referencia = $idActividad . "-" . rand(0,9999);
@@ -26,24 +34,15 @@ class Reserva_CONT extends CI_Controller
         $reserva = array(
             "idReserva" => null,
             "referencia" => $referencia,
-            "personas" => intval($_POST['numero']),
-            "precio" => floatval($_POST['precio']),
+            "personas" => intval($personas),
+            "precio" => floatval($precio),
             "fechaReserva" => Date('Y-m-d'),
             "fechaRealizacion" => null
         );
 
         $this->Reserva_MOD->nuevaReserva($reserva);
 
-        $dat['referencia'] = $referencia;
-        $this->load->view('utils/head');
-        $this->load->view('utils/confirmacion_reserva', $dat);
-        $this->load->view('utils/foot');
-
+        echo json_encode($referencia);
     }
 
-    public function comprobarReferencia($referencia)
-    {
-
-
-    }
 }

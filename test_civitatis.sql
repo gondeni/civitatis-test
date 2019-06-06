@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 06, 2019 at 01:22 AM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-06-2019 a las 13:01:08
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test_civitatis`
+-- Base de datos: `test_civitatis`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actividades`
+-- Estructura de tabla para la tabla `actividades`
 --
 
 CREATE TABLE `actividades` (
@@ -39,7 +39,7 @@ CREATE TABLE `actividades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `actividades`
+-- Volcado de datos para la tabla `actividades`
 --
 
 INSERT INTO `actividades` (`idActividad`, `titulo`, `descripcion`, `fechaIni`, `fechaFin`, `precio`, `popularidad`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `actividades` (`idActividad`, `titulo`, `descripcion`, `fechaIni`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actividades_relacionadas`
+-- Estructura de tabla para la tabla `actividades_relacionadas`
 --
 
 CREATE TABLE `actividades_relacionadas` (
@@ -61,7 +61,7 @@ CREATE TABLE `actividades_relacionadas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `actividades_relacionadas`
+-- Volcado de datos para la tabla `actividades_relacionadas`
 --
 
 INSERT INTO `actividades_relacionadas` (`idRelacion`, `actividadPrincipal`, `actividadRelacionada`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `actividades_relacionadas` (`idRelacion`, `actividadPrincipal`, `act
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservas`
+-- Estructura de tabla para la tabla `reservas`
 --
 
 CREATE TABLE `reservas` (
@@ -86,28 +86,17 @@ CREATE TABLE `reservas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `reservas`
---
-
-INSERT INTO `reservas` (`idReserva`, `referencia`, `personas`, `precio`, `fechaReserva`, `fechaRealizacion`) VALUES
-(1, '1-4', 1, 100, '2019-06-06', NULL),
-(2, '1-0', 1, 100, '2019-06-06', NULL),
-(3, '1-3', 1, 100, '2019-06-06', NULL),
-(4, '1-2221', 1, 100, '2019-06-06', NULL),
-(5, '1-5624', 10, 1000, '2019-06-06', NULL);
-
---
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `actividades`
+-- Indices de la tabla `actividades`
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`idActividad`);
 
 --
--- Indexes for table `actividades_relacionadas`
+-- Indices de la tabla `actividades_relacionadas`
 --
 ALTER TABLE `actividades_relacionadas`
   ADD PRIMARY KEY (`idRelacion`),
@@ -115,39 +104,39 @@ ALTER TABLE `actividades_relacionadas`
   ADD KEY `actividadSecundaria` (`actividadRelacionada`);
 
 --
--- Indexes for table `reservas`
+-- Indices de la tabla `reservas`
 --
 ALTER TABLE `reservas`
   ADD PRIMARY KEY (`idReserva`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `actividades`
+-- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
   MODIFY `idActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `actividades_relacionadas`
+-- AUTO_INCREMENT de la tabla `actividades_relacionadas`
 --
 ALTER TABLE `actividades_relacionadas`
   MODIFY `idRelacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `reservas`
+-- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `actividades_relacionadas`
+-- Filtros para la tabla `actividades_relacionadas`
 --
 ALTER TABLE `actividades_relacionadas`
   ADD CONSTRAINT `actividades_relacionadas_ibfk_1` FOREIGN KEY (`actividadPrincipal`) REFERENCES `actividades` (`idActividad`) ON DELETE CASCADE ON UPDATE CASCADE,

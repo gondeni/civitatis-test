@@ -1,12 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * Created by PhpStorm.
- * User: GNICOLAS
- * Date: 04/06/2019
- * Time: 15:45
- */
+
 class Actividad_CONT extends CI_Controller
 {
 
@@ -17,6 +12,10 @@ class Actividad_CONT extends CI_Controller
 //        $this->load->library('session');
     }
 
+    /**
+     * Metodo generador del listado de actividades.
+     * Carga la vista del listado.
+     */
     public function listar()
     {
 
@@ -27,6 +26,7 @@ class Actividad_CONT extends CI_Controller
         //Obtenemos todas las actividades entre las fechas dadas
         $datos['actividades'] = $this->Actividad_MOD->getActividades($fecha_ini, $fecha_fin);
 
+        //Llamamos al metodo para obtener las actividades relacionadas
         $datos['actividades'] = self::obtenerRelacionadas($datos);
 
         $this->output->cache(5);
@@ -35,6 +35,11 @@ class Actividad_CONT extends CI_Controller
         $this->load->view('utils/foot');
     }
 
+    /**
+     * Metodo para obtener las actividades relacionadas
+     * @param $datos matriz de actividades
+     * @return mixed matriz de actividades procesada con relacionadas
+     */
     public function obtenerRelacionadas($datos)
     {
         //Recorremos las actividades para obtener sus relacionadas
