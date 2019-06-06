@@ -5,10 +5,11 @@ test-civitatis
 
     git clone https://github.com/gondeni/civitatis-test.git
         
-
 Crear BBDD:
 
-    Importando el archivo test_civitatis.sql de la raiz del proyecto
+    Importar el archivo test_civitatis.sql de la raiz del proyecto
+    Se pueden añadir más actividades y relaciones a las tablas correspondientes,
+    siempre respetando el modelo de datos para su correcto funcionamiento.
 
 Modificar config.php
     
@@ -20,7 +21,7 @@ Modificar config.php
     clone el proyecto.
     
     
-    
 **Notas**
 
+He utilizado codeigniter como framework de PHP para la realización de este test 
 Requiere PHP 7.1

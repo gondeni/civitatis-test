@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2019 a las 13:01:08
+-- Tiempo de generación: 06-06-2019 a las 14:20:47
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.1.16
 
@@ -43,10 +43,10 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`idActividad`, `titulo`, `descripcion`, `fechaIni`, `fechaFin`, `precio`, `popularidad`) VALUES
-(1, 'prueba1', 'descripcion act1', '2019-06-07', '2019-06-05', 100, 10),
-(2, 'prueba2', 'descripcion act2', '2019-06-07', '2019-06-05', 20, 5),
-(3, 'prueba3', 'descripcion act3', '2019-06-07', '2019-06-09', 80, 5),
-(4, 'prueba4', 'descripcion act4', '2019-06-10', '2019-06-14', 60, 1);
+(1, 'Actividad 1', 'descripcion act1', '2019-06-07', '2019-06-05', 100, 10),
+(2, 'Actividad 2', 'descripcion act2', '2019-06-07', '2019-06-05', 20, 5),
+(3, 'Actividad 3', 'descripcion act3', '2019-06-07', '2019-06-09', 80, 5),
+(4, 'Actividad 4', 'descripcion act4', '2019-06-10', '2019-06-14', 60, 6);
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,7 @@ ALTER TABLE `actividades_relacionadas`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
